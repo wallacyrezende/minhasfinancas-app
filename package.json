@@ -19,7 +19,7 @@
     "react-scripts": "3.4.3",
     "react-transition-group": "^4.4.1",
     "toastr": "^2.1.4",
-    "yarn": "1.22.10"
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start",
