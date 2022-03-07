@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const httpClient = axios.create({
     baseURL: 'https://minhasfincancas-api.herokuapp.com'
+    // baseURL: 'http://localhost:8080'
 })
 
 class ApiService {

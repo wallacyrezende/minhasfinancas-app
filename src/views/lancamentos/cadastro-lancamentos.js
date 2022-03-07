@@ -149,7 +149,7 @@ class CadastroLancamentos extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-6 mt-1">
                         { this.state.atualizando ?
                             <button type="button" className="btn btn-primary" onClick={this.atualizar} >
                                 <i className="pi pi-refresh"></i> Atualizar

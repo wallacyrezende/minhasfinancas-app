@@ -27,6 +27,7 @@ function Rotas(props){
     return (
         <HashRouter>
             <Switch>
+                <Route path="/" component={ Login } />
                 <Route path="/login" component={ Login } />
                 <Route path="/cadastro-usuarios" component={ CadastroUsuario } />
 
