@@ -5,12 +5,16 @@ import { withRouter } from 'react-router-dom'
 import UsuarioService from '../app/service/usuarioService'
 import { mensagemErro } from '../components/toastr'
 import { AuthContext } from '../main/provedorAutenticacao'
+import AuthService from '../app/service/authService'
 
 class Login extends React.Component {
 
-    constructor(){
+    constructor(props){
         super()
         this.service = new UsuarioService();
+        if(AuthService.isUsuarioAutenticado()) {
+            props.history.push('/home')
+        }
     }
 
     state = {

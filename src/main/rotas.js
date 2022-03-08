@@ -16,7 +16,7 @@ function RotaAutenticada( { component: Component, isUsuarioAutenticado, ...props
                 )
             } else {
                 return(
-                    <Redirect to={ {pathname : '/login', state : { from: componentProps.location } } } />
+                    <Redirect to={ {pathname : '/login', state : { from: componentProps.location }}} />
                 )
             }
         }} />
@@ -27,10 +27,10 @@ function Rotas(props){
     return (
         <HashRouter>
             <Switch>
-                <Route path="/" component={ Login } />
+                <Route path="/" exact component={ Login }/>
                 <Route path="/login" component={ Login } />
                 <Route path="/cadastro-usuarios" component={ CadastroUsuario } />
-
+                
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/home" component={ Home } />
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/consulta-lancamentos" component={ ConsultaLancamentos } />
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/cadastro-lancamentos/:id?" component={ CadastroLancamentos } />

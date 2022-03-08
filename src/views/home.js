@@ -1,16 +1,20 @@
 import React from 'react'
 import UsuarioService from '../app/service/usuarioService'
 import { AuthContext } from '../main/provedorAutenticacao'
+import LancamentosTable from '../views/lancamentos/lancamentosTable'
+import LancamentoService from '../../src/app/service/lancamentoService'
 
 class Home extends React.Component{
 
     state = {
-        saldo: 0
+        saldo: 0,
+        lancamentos: [],
     }
 
     constructor() {
         super()
         this.usuarioService = new UsuarioService();
+        this.lancamentoService = new LancamentoService();
     }
 
     componentDidMount(){
@@ -19,6 +23,13 @@ class Home extends React.Component{
             .obterSaldoPorUsuario(usuarioLogado.id)
             .then( response => {
                 this.setState({ saldo: response.data })
+            }).catch( error => {
+                console.error(error.response)
+            })
+
+        this.lancamentoService.ultimosLancamentos(usuarioLogado.id)
+            .then( response => {
+                this.setState({ lancamentos: response.data })
             }).catch( error => {
                 console.error(error.response)
             })
@@ -40,6 +51,15 @@ class Home extends React.Component{
                         </i>  Cadastrar Lançamento
                     </a>
                 </p>
+                <br/ >
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="bs-component">
+                            <LancamentosTable 
+                                lancamentos={this.state.lancamentos}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
